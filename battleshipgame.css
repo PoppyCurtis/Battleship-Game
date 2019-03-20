@@ -9,12 +9,12 @@ body {
     height: 863px;
     margin: auto;
 }
-#gameBoard #messageArea {
+div #messageArea {
     position: absolute;
     top: 0;
     left: 0;
     color: rgb(83, 175, 19);
-    z-index: 1000;
+
 }
 table {    
     position: absolute;

@@ -97,6 +97,8 @@ function parseGuess(guess) {
 function init() {   
   var fireButton = document.getElementById("fireButton");   
   fireButton.onclick = handleFireButton; 
+  var guessInput = document.getElementById("guessInput");   
+  guessInput.onkeypress = handleKeyPress; 
 }
 function handleFireButton() {   
   var guessInput = document.getElementById("guessInput");    
@@ -104,6 +106,14 @@ function handleFireButton() {
   controller.processGuess(guess);
   guessInput.value = "";
 }
+function handleKeyPress(event) {   
+  var fireButton = document.getElementById("fireButton");   
+  if (event.keyCode === 13) {      
+    fireButton.click();      
+    return false;   
+  } 
+}
+
 window.onload = init;
 
 

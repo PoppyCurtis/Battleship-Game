@@ -93,6 +93,22 @@ function parseGuess(guess) {
   }
   return null;
 }
+controller.processGuess("A0");
+controller.processGuess("A1");
+controller.processGuess("A2");
+controller.processGuess("A3");
+controller.processGuess("A4");
+controller.processGuess("A5");
+controller.processGuess("A6");
+controller.processGuess("B0");
+controller.processGuess("B1");
+controller.processGuess("B2");
+controller.processGuess("B3");
+controller.processGuess("B4");
+controller.processGuess("G0");
+controller.processGuess("G0");
+controller.processGuess("E5");
+controller.processGuess("C3");
 
 
 

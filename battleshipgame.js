@@ -22,12 +22,7 @@ var view = {
   }
 };
 view.displayMessage("Tap tap, is this thing on?");
-view.displayMiss("00");
-view.displayHit("34");
-view.displayMiss("21");
-view.displayHit("12");
-view.displayMiss("25");
-view.displayHit("26");
+
 
 var model = {
   boardSize: 7,
@@ -67,33 +62,37 @@ var model = {
 };
 var controller = {
   guesses: 0,
-  processGuess: function (guess) {     // more code will go here   
+  processGuess: function (guess) {
+    var location = parseGuess(guess);
+    if (location) {
+      this.guesses++;         
+      var hit = model.fire(location);
+      if (hit && model.shipsSunk === model.numShips) {               
+        view.displayMessage("You sank all my battleships, in " +                                                 
+        this.guesses + " guesses"); 
+    }
   }
-  
+}
+
 };
-function parseGuess(guess) {   
+function parseGuess(guess) {
   var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
-   if (guess === null || guess.length !== 2) {      
-     alert("Oops, please enter a letter and a number on the board.");   
-    } else {      
-      firstChar = guess.charAt(0);      
-      var row = alphabet.indexOf(firstChar);       
-      var column = guess.charAt(1);        
-      if (isNaN(row) || isNaN(column)) {         
-        alert("Oops, that isn't on the board.");      
-      } else if (row < 0 || row >= model.boardSize ||     column < 0 || column >= model.boardSize) {         
-        alert("Oops, that's off the board!");      
-      } else {         
-        return row + column;      
-      }   
-    }   
-    return null; 
+  if (guess === null || guess.length !== 2) {
+    alert("Oops, please enter a letter and a number on the board.");
+  } else {
+    firstChar = guess.charAt(0);
+    var row = alphabet.indexOf(firstChar);
+    var column = guess.charAt(1);
+    if (isNaN(row) || isNaN(column)) {
+      alert("Oops, that isn't on the board.");
+    } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+      alert("Oops, that's off the board!");
+    } else {
+      return row + column;
+    }
   }
-  console.log(parseGuess("A0"));
-  console.log(parseGuess("B6"));
-  console.log(parseGuess("G3"));
-  console.log(parseGuess("H0")); 
-  console.log(parseGuess("A7")); 
+  return null;
+}
 
 
 
